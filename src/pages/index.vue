@@ -1,6 +1,10 @@
 <script setup lang="ts">
 const { t } = useI18n()
 const appStore = useAppStore()
+
+const amount = computed(() => {
+  return appStore.count
+})
 </script>
 
 <template>
@@ -12,5 +16,6 @@ const appStore = useAppStore()
     <button @click="appStore.inc">
       inc
     </button>
+    <p>{{ amount }}</p>
   </div>
 </template>

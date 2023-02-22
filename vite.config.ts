@@ -7,6 +7,7 @@ import Unocss from 'unocss/vite'
 import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 
 import Components from 'unplugin-vue-components/vite'
+import { VantResolver } from 'unplugin-vue-components/resolvers'
 import AutoImport from 'unplugin-auto-import/vite'
 import PostcssPluginPx2rem from 'postcss-plugin-px2rem'
 
@@ -30,6 +31,7 @@ export default defineConfig({
     }),
     AutoImport({
       imports: [
+        'vue',
         {
           'vue-router/composables': [
             'useRoute',
@@ -55,6 +57,7 @@ export default defineConfig({
     }),
     Components({
       dts: './src/components.d.ts',
+      resolvers: [VantResolver()],
     }),
     ViteCompression(),
   ],
