@@ -5,6 +5,7 @@ const appStore = useAppStore()
 const amount = computed(() => {
   return appStore.count
 })
+Toast.success('sds')
 </script>
 
 <template>

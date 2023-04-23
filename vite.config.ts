@@ -48,16 +48,24 @@ export default defineConfig({
             ['default', 'request'],
           ],
         },
+        {
+          vant: [
+            'Toast',
+            'Dialog',
+            'Notify',
+            'ImagePreview',
+          ],
+        },
       ],
       dirs: [
         './src/stores',
       ],
       vueTemplate: true,
+      resolvers: [VantResolver()],
       dts: './src/auto-imports.d.ts',
     }),
     Components({
       dts: './src/components.d.ts',
-      resolvers: [VantResolver()],
     }),
     ViteCompression(),
   ],
@@ -83,7 +91,7 @@ export default defineConfig({
 
   server: {
     host: '0.0.0.0',
-    port: 8080,
+    port: 80,
     proxy: {
       '/api': {
         target: 'http://localhost:8081',
@@ -91,5 +99,9 @@ export default defineConfig({
         rewrite: path => path.replace(/^\/api/, ''),
       },
     },
+  },
+
+  build: {
+    outDir: 'dist',
   },
 })
